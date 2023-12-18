@@ -4,24 +4,23 @@ using System.Diagnostics;
 
 namespace FoodFactory.Controllers
 {
-    public class HomeController : Controller
+    public class Restaurant : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Zurna()
         {
             return View();
         }
+
+        public IActionResult Pizza()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
