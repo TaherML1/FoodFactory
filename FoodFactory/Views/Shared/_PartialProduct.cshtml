@@ -1,0 +1,16 @@
+﻿
+@model List<FoodFactory.Models.Food>
+
+
+
+
+@foreach (var Food in Model)
+{
+    if (Food.Status == true)
+    {
+                          <li>
+            @Food.FoodName  @Food.Price Euro  @Food.Description
+                          </li>
+    }
+
+}
