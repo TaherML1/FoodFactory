@@ -1,16 +1,40 @@
 ﻿
-@model List<FoodFactory.Models.Food>
+@model FoodFactory.Models.Food
 
 
 
 
-@foreach (var Food in Model)
+
+<form>
+
+@foreach (var option in Model.Options)
 {
-    if (Food.Status == true)
+
+         <div class="form-group">
+        <label for="exampleFormControlSelect1">@option.Label</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          
+       
+
+    @for (int i = 0; i < option.Name.Length; i++)
     {
-                          <li>
-            @Food.FoodName  @Food.Price Euro  @Food.Description
-                          </li>
+
+       
+            <option>@option.Name[i]</option>
+        
+
     }
 
-}
+         </select>
+          </div>
+}   
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
+
+
+
+

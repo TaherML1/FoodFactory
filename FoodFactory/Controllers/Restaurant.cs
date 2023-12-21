@@ -15,38 +15,67 @@ namespace FoodFactory.Controllers
         public IActionResult Zurna()
         {
 
-            List<Food> Products = new List<Food>() {
-
-                new Food() {FoodId=0,FoodName="Doner wrap",Price=3.50,Status=true,Description="Cheese"},
-                new Food() {FoodId=1,FoodName="Zurna wrap",Price=5,Status=true,Description="Cheese"},
-                new Food() {FoodId=2,FoodName="Doner",Price=3.50,Status=false,Description="Cheese"},
-                new Food() {FoodId=3,FoodName="Mega Zurna Wrap",Price=7.90,Status=true,Description="Cheese"},
-                new Food() {FoodId=4,FoodName="Ayran",Price=1,Status=true,Description="Cheese"},
-                new Food() {FoodId=5,FoodName="Soda",Price=1,Status=true,Description="Cheese"},
+            Food Zurna = new Food("Zurna");
 
 
-            };
 
 
-            return View(Products);
+
+            var WrapOption = new MealOption { Name = new[] { "Standard", "Zurna", "Meat" }, Label = "Zurna" };
+            var sizeOption = new MealOption { Name = new[] { "Small", "Medium", "Large" }, Label = "Size" };
+            var Cheese = new MealOption { Name = new[] { "Cheddar", "Tazekaşar","None" }, Label = "Cheese" };
+            var Dessert = new MealOption { Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label = "Dessert" };
+            var drinkOption = new MealOption { Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label = "Drink" };
+
+
+
+
+
+
+            Zurna.AddOption(WrapOption);
+            Zurna.AddOption(sizeOption);
+            Zurna.AddOption(Cheese);
+            Zurna.AddOption(Dessert);
+            Zurna.AddOption(drinkOption);
+
+
+
+
+
+
+            return View(Zurna);
         }
 
         public IActionResult Pizza()
         {
 
-            List<Food> Products = new List<Food>() {
-
-                new Food() {FoodId=0,FoodName="Margarita",Price=3.50,Status=true,Description="Cheese"},
-                new Food() {FoodId=1,FoodName="Mixed",Price=5,Status=true,Description="Mixed"},
-                new Food() {FoodId=2,FoodName="Meat Master",Price=3.50,Status=false,Description="To meat lovers"},
-                new Food() {FoodId=3,FoodName="Vegan",Price=7.90,Status=true,Description="Vegan"},
-                new Food() {FoodId=4,FoodName="Ayran",Price=1,Status=true,Description="Classical turk drink."},
-                new Food() {FoodId=5,FoodName="Soda",Price=1,Status=true,Description="Soda"},
+            Food MealWithOptions = new Food("Pizza");
 
 
-            };
 
-            return View(Products);
+
+
+            var PizzaOption = new MealOption { Name = new[] { "Margarita", "Pepperoni", "Mixed", "Chicken" }, Label="Pizza" };
+            var sizeOption = new MealOption { Name = new[] { "Small","Medium","Large" },Label="Size" };
+            var Thickness = new MealOption { Name = new[] { "Thin", "Standard ","Thick"},Label="Thickness" };
+            var Dessert = new MealOption { Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label="Dessert" };
+            var drinkOption = new MealOption { Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label="Drink" };
+
+
+
+
+            
+
+            MealWithOptions.AddOption(PizzaOption);
+            MealWithOptions.AddOption(sizeOption);
+            MealWithOptions.AddOption(Thickness);
+            MealWithOptions.AddOption(Dessert);
+            MealWithOptions.AddOption(drinkOption);
+            
+
+
+
+            return View(MealWithOptions);
         }
 
 
