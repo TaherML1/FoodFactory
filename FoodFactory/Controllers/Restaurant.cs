@@ -17,7 +17,8 @@ namespace FoodFactory.Controllers
         {
             return View();
         }
-
+        [HttpGet]
+        
         public IActionResult Zurna()
         {
 
@@ -42,6 +43,15 @@ namespace FoodFactory.Controllers
 
 
         }
+
+        [HttpPost]
+        public IActionResult Zurna(Food bir) 
+        {
+            var selectedOption = bir.AddOption;
+            return View(); 
+        }
+
+        
 
         public IActionResult Pizza()
         {
