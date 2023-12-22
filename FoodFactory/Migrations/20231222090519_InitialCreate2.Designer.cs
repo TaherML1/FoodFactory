@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodFactory.Migrations
 {
     [DbContext(typeof(FoodFactoryDBContext))]
-    [Migration("20231221225729_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231222090519_InitialCreate2")]
+    partial class InitialCreate2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,11 @@ namespace FoodFactory.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FoodId"));
+
+                    b.Property<string>("FoodName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("FoodName");
 
                     b.HasKey("FoodId");
 

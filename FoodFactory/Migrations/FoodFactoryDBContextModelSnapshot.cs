@@ -30,6 +30,11 @@ namespace FoodFactory.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FoodId"));
 
+                    b.Property<string>("FoodName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("FoodName");
+
                     b.HasKey("FoodId");
 
                     b.ToTable("Foods");

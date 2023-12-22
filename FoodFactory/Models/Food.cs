@@ -9,7 +9,7 @@ namespace FoodFactory.Models
         [Key]
         public int FoodId { get; set; }
 
-        public string FoodName;
+        public string FoodName { get; set; }
 
         public List <MealOption> Options { get; set; }
         public Food()
