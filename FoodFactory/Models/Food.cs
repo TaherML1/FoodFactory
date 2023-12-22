@@ -12,16 +12,26 @@ namespace FoodFactory.Models
         public string FoodName { get; set; }
 
         public List <MealOption> Options { get; set; }
-        public Food()
+
+
+
+        public Food(int id, string name)
         {
+            FoodId = id;
+            FoodName = name;
             Options = new List<MealOption>();
         }
 
-        public Food(string name)
+
+        public Food()
         {
-            FoodName = name;
-            Options= new List <MealOption>();
+            FoodId = 0;
+            FoodName = "Food";
+            Options = new List<MealOption>();
         }
+
+        
+
         public void AddOption(MealOption option)
         {
             Options.Add(option);

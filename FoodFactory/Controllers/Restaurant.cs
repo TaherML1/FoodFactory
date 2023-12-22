@@ -21,14 +21,14 @@ namespace FoodFactory.Controllers
         public IActionResult Zurna()
         {
 
-            Food Zurna = new Food("Zurna");
+            Food Zurna = new Food() { FoodId = 1, FoodName = "Zurna" };
 
 
-            var WrapOption = new MealOption { Name = new[] { "Standard", "Zurna", "Meat" }, Label = "Zurna" };
-            var sizeOption = new MealOption { Name = new[] { "Small", "Medium", "Large" }, Label = "Size" };
-            var Cheese = new MealOption { Name = new[] { "Cheddar", "Tazekaşar","None" }, Label = "Cheese" };
-            var Dessert = new MealOption { Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label = "Dessert" };
-            var drinkOption = new MealOption { Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label = "Drink" };
+            var WrapOption = new MealOption { mealId = 1, Name = new[] { "Standard", "Zurna", "Meat" }, Label = "Zurna" };
+            var sizeOption = new MealOption { mealId = 2, Name = new[] { "Small", "Medium", "Large" }, Label = "Size" };
+            var Cheese = new MealOption { mealId = 3, Name = new[] { "Cheddar", "Tazekaşar","None" }, Label = "Cheese" };
+            var Dessert = new MealOption { mealId = 4, Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label = "Dessert" };
+            var drinkOption = new MealOption { mealId = 5, Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label = "Drink" };
 
 
             Zurna.AddOption(WrapOption);
@@ -46,14 +46,14 @@ namespace FoodFactory.Controllers
         public IActionResult Pizza()
         {
 
-            Food MealWithOptions = new Food("Pizza");
+            Food MealWithOptions = new Food() { FoodId =1 , FoodName="Pizza" };
 
 
-            var PizzaOption = new MealOption { Name = new[] { "Margarita", "Pepperoni", "Mixed", "Chicken" }, Label="Pizza" };
-            var sizeOption = new MealOption { Name = new[] { "Small","Medium","Large" },Label="Size" };
-            var Thickness = new MealOption { Name = new[] { "Thin", "Standard ","Thick"},Label="Thickness" };
-            var Dessert = new MealOption { Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label="Dessert" };
-            var drinkOption = new MealOption { Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label="Drink" };
+            var PizzaOption = new MealOption { mealId= 1, Name = new[] { "Margarita", "Pepperoni", "Mixed", "Chicken" }, Label="Pizza" };
+            var sizeOption = new MealOption { mealId = 2, Name = new[] { "Small","Medium","Large" },Label="Size" };
+            var Thickness = new MealOption { mealId = 3, Name = new[] { "Thin", "Standard ","Thick"},Label="Thickness" };
+            var Dessert = new MealOption { mealId = 4, Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label="Dessert" };
+            var drinkOption = new MealOption { mealId = 5, Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label="Drink" };
 
 
             MealWithOptions.AddOption(PizzaOption);
