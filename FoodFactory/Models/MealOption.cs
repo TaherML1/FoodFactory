@@ -7,17 +7,20 @@ namespace FoodFactory.Models
         [Key]
         public int  mealId {get; set;}
         public string[] Name { get; set; }
-
         public string Label { get; set; }
 
-        public MealOption(string[] name)
+        public MealOption(int id,string[] name,string label)
         {
+            mealId = id;
             Name = name;
+            Label = label;
         }
 
         public MealOption()
         {
-            Name = new string[] { "Small", "Medium", "Large1111" };
+            mealId=0;   
+            Name = new string[] { "one", "two", "three" };
+            Label = "Option";
         }
     }
 }
