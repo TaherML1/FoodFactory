@@ -7,6 +7,12 @@ namespace FoodFactory.Controllers
 {
     public class Restaurant : Controller
     {
+        private readonly FoodFactoryDBContext dbContext;
+
+        public Restaurant(FoodFactoryDBContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         public IActionResult Index()
         {
             return View();
@@ -33,6 +39,8 @@ namespace FoodFactory.Controllers
 
 
             return View(Zurna);
+
+
         }
 
         public IActionResult Pizza()
