@@ -14,7 +14,7 @@ namespace FoodFactory.Controllers
         }
 
         // GET:
-
+        public IActionResult Index() { return View(); }
         public IActionResult Create()
         {
             var viewModel = new CreateFoodViewModel();
