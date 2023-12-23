@@ -1,0 +1,29 @@
+﻿@model List<FoodFactory.Models.Food>
+
+<h2>Orders</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Cheese</th>
+            <th>Dessert</th>
+            <th>Drinks</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Type</td>
+                    <td>@order.Size</td>
+                    <td>@order.Cheese</td>
+                    <td>@order.Dessert</td>
+                    <td>@order.Drinks</td>
+                </tr>
+        }
+    </tbody>
+</table>
