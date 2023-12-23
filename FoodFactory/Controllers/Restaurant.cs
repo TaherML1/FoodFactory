@@ -1,88 +1,56 @@
 ﻿using FoodFactory.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using static FoodFactory.Models.Food;
 
 namespace FoodFactory.Controllers
 {
     public class Restaurant : Controller
     {
-        private readonly FoodFactoryDBContext dbContext;
+        private readonly FoodFactoryDBContext _foodFactoryDbContext;
 
-        public Restaurant(FoodFactoryDBContext dbContext)
+        public Restaurant(FoodFactoryDBContext foodFactoryDbContext)
         {
-            this.dbContext = dbContext;
-        }
-        public IActionResult Index()
-        {
-            return View();
-        }
-        [HttpGet]
-        
-        public IActionResult Zurna()
-        {
-
-            Food Zurna = new Food() { FoodId = 1, FoodName = "Zurna" };
-
-
-            var WrapOption = new MealOption { mealId = 1, Name = new[] { "Standard", "Zurna", "Meat" }, Label = "Zurna" };
-            var sizeOption = new MealOption { mealId = 2, Name = new[] { "Small", "Medium", "Large" }, Label = "Size" };
-            var Cheese = new MealOption { mealId = 3, Name = new[] { "Cheddar", "Tazekaşar","None" }, Label = "Cheese" };
-            var Dessert = new MealOption { mealId = 4, Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label = "Dessert" };
-            var drinkOption = new MealOption { mealId = 5, Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label = "Drink" };
-
-
-            Zurna.AddOption(WrapOption);
-            Zurna.AddOption(sizeOption);
-            Zurna.AddOption(Cheese);
-            Zurna.AddOption(Dessert);
-            Zurna.AddOption(drinkOption);
-
-
-            return View(Zurna);
-
-
+            _foodFactoryDbContext = foodFactoryDbContext;
         }
 
+        // GET:
+
+        public IActionResult Create()
+        {
+            var viewModel = new CreateFoodViewModel();
+            return View(viewModel);
+        }
+
+        // POST:
         [HttpPost]
-        public IActionResult Zurna(Food bir) 
-        {
-            var selectedOption = bir.AddOption;
-            return View(); 
-        }
-
+        [ValidateAntiForgeryToken]
         
-
-        public IActionResult Pizza()
+        public IActionResult Create(CreateFoodViewModel viewModel)
         {
+            if (ModelState.IsValid)
+            {
+                var food = new Food
+                {
+                    Name = viewModel.Name,
+                    Size = viewModel.Size,
+                    Type = viewModel.Type,
+                    Cheese = viewModel.Cheese,
+                    Dessert = viewModel.Dessert,
+                    Drinks = viewModel.Drinks,
+                };
 
-            Food MealWithOptions = new Food() { FoodId =1 , FoodName="Pizza" };
+                _foodFactoryDbContext.MyFoods.Add(food);
+                _foodFactoryDbContext.SaveChanges();
 
+                return RedirectToAction("Index", "Home");
+            }
 
-            var PizzaOption = new MealOption { mealId= 1, Name = new[] { "Margarita", "Pepperoni", "Mixed", "Chicken" }, Label="Pizza" };
-            var sizeOption = new MealOption { mealId = 2, Name = new[] { "Small","Medium","Large" },Label="Size" };
-            var Thickness = new MealOption { mealId = 3, Name = new[] { "Thin", "Standard ","Thick"},Label="Thickness" };
-            var Dessert = new MealOption { mealId = 4, Name = new[] { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" }, Label="Dessert" };
-            var drinkOption = new MealOption { mealId = 5, Name = new[] { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" }, Label="Drink" };
+            viewModel.TypeChoices = new List<string> { "Standard", "Zurna", "Beef" };
+            viewModel.SizeChoices = new List<string> { "Small", "Medium", "Large" };
+            viewModel.CheeseChoices = new List<string> { "Cheddar", "Tazekaşar", "None" };
+            viewModel.DessertChoices = new List<string> { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" };
+            viewModel.DrinksChoices = new List<string> { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" };
 
-
-            MealWithOptions.AddOption(PizzaOption);
-            MealWithOptions.AddOption(sizeOption);
-            MealWithOptions.AddOption(Thickness);
-            MealWithOptions.AddOption(Dessert);
-            MealWithOptions.AddOption(drinkOption);
-            
-
-
-
-            return View(MealWithOptions);
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(viewModel);
         }
     }
 }

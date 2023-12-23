@@ -4,12 +4,15 @@ namespace FoodFactory.Models
 {
     public class FoodFactoryDBContext : DbContext
     {
-        public FoodFactoryDBContext(DbContextOptions<FoodFactoryDBContext> options) : base(options)
+        public FoodFactoryDBContext(DbContextOptions<FoodFactoryDBContext> options) 
+            : base(options)
         {
-
         }
 
-        public DbSet<Food> Foods { get; set; }
-        public DbSet<MealOption> MealOptions { get; set; }
+        public DbSet<Food> MyFoods { get; set; }
+        // Add DbSet properties for other entities, if any
+
+        // Add any additional configuration or methods as needed
     }
 }
+

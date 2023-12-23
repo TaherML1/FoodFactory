@@ -1,0 +1,55 @@
+﻿@model CreateFoodViewModel
+
+<h2>Create Food</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Size"></label>
+        <select asp-for="Size" asp-items="new SelectList(Model.SizeChoices)" class="form-control">
+            <option value="">Select Size</option>
+        </select>
+        <span asp-validation-for="Size" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type"></label>
+        <select asp-for="Type" asp-items="new SelectList(Model.TypeChoices)" class="form-control">
+            <option value="">Select Type</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cheese"></label>
+        <select asp-for="Cheese" asp-items="new SelectList(Model.CheeseChoices)" class="form-control">
+            <option value="">Select Cheese</option>
+        </select>
+        <span asp-validation-for="Cheese" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Dessert"></label>
+        <select asp-for="Dessert" asp-items="new SelectList(Model.DessertChoices)" class="form-control">
+            <option value="">Select Dessert</option>
+        </select>
+        <span asp-validation-for="Dessert" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Drinks"></label>
+        <select asp-for="Drinks" asp-items="new SelectList(Model.DrinksChoices)" class="form-control">
+            <option value="">Select Drinks</option>
+        </select>
+        <span asp-validation-for="Drinks" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
