@@ -41,8 +41,10 @@ app.UseEndpoints(endpoints =>
         defaults: new { controller = "Restaurant", action = "Zurna" });
 
     endpoints.MapControllerRoute(
-      name: "orders",
-      pattern: "{controller=Order}/{action=Index}/{id?}");
+      name: "order",
+      pattern: "order/Index",
+      defaults: new { controller = "OrderController", action = "Index" });
+     
 });
 
 app.Run();

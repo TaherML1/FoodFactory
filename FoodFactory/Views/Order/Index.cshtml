@@ -2,7 +2,7 @@
 
 <h2>Orders</h2>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Id</th>
@@ -11,6 +11,7 @@
             <th>Cheese</th>
             <th>Dessert</th>
             <th>Drinks</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,12 @@
                     <td>@order.Cheese</td>
                     <td>@order.Dessert</td>
                     <td>@order.Drinks</td>
+                    <td>
+                        <form asp-action="Delete" asp-controller="Order" method="post">
+                        @Html.Hidden("id", order.Id)
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
         }
     </tbody>
