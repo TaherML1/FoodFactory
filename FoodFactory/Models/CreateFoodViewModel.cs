@@ -4,8 +4,7 @@ namespace FoodFactory.Models
 {
     public class CreateFoodViewModel
     {
-        [Required]
-        public string Name { get; set; }
+        
         [Required]
         public string Size { get; set; }
         [Required]
@@ -19,7 +18,9 @@ namespace FoodFactory.Models
         [Required]
         public string Drinks { get; set; }
 
+        public List<string> PizzaTypeChoices { get; set; } = new List<string> { "Margarita", "Pepperoni Pizza", "BBQ Chicken Pizza", "Cheese Pizza" };
 
+        public List<string> PizzaPromotion { get; set; } = new List<string> { "Cheddar", "Chicken", "Mushroom", "Sausage", "Bacon" };
         public List<string> TypeChoices { get; set; } = new List<string> { "Standard", "Zurna", "Beef" };
         public List<string> SizeChoices { get; set; } = new List<string> { "Small", "Medium", "Large" };
 

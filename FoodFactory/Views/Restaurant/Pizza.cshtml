@@ -1,10 +1,49 @@
-﻿
-<h1>Pizzacı</h1>
+﻿@model CreateFoodViewModel
 
-@Html.Partial("_PartialProduct")
+<h2> Pizza</h2>
 
+<form asp-action="Pizza" method="post">
+    @Html.AntiForgeryToken()
 
+    <div class="form-group">
+        <label asp-for="Type"></label>
+        <select asp-for="Type" asp-items="new SelectList(Model.PizzaTypeChoices)" class="form-control">
+            <option value="">Select Type</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
 
+    <div class="form-group">
+        <label asp-for="Size"></label>
+        <select asp-for="Size" asp-items="new SelectList(Model.SizeChoices)" class="form-control">
+            <option value="">Select Size</option>
+        </select>
+        <span asp-validation-for="Size" class="text-danger"></span>
+    </div>
 
+    <div class="form-group">
+        <label asp-for="Cheese">Promotion</label>
+        <select asp-for="Cheese" asp-items="new SelectList(Model.PizzaPromotion)" class="form-control">
+            <option value="">Select Promotion</option>
+        </select>
+        <span asp-validation-for="Cheese" class="text-danger"></span>
+    </div>
 
+    <div class="form-group">
+        <label asp-for="Dessert"></label>
+        <select asp-for="Dessert" asp-items="new SelectList(Model.DessertChoices)" class="form-control">
+            <option value="">Select Dessert</option>
+        </select>
+        <span asp-validation-for="Dessert" class="text-danger"></span>
+    </div>
 
+    <div class="form-group">
+        <label asp-for="Drinks"></label>
+        <select asp-for="Drinks" asp-items="new SelectList(Model.DrinksChoices)" class="form-control">
+            <option value="">Select Drinks</option>
+        </select>
+        <span asp-validation-for="Drinks" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Pizza</button>
+</form>

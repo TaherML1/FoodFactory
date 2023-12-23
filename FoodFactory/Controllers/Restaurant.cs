@@ -1,5 +1,6 @@
 ﻿using FoodFactory.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FoodFactory.Controllers
 {
@@ -30,9 +31,8 @@ namespace FoodFactory.Controllers
             {
                 var food = new Food
                 {
-                    Name = viewModel.Name,
-                    Size = viewModel.Size,
                     Type = viewModel.Type,
+                    Size = viewModel.Size,
                     Cheese = viewModel.Cheese,
                     Dessert = viewModel.Dessert,
                     Drinks = viewModel.Drinks,
@@ -52,5 +52,46 @@ namespace FoodFactory.Controllers
 
             return View(viewModel);
         }
+
+
+        public IActionResult Pizza()
+        {
+            var viewModel2 = new CreateFoodViewModel();
+            return View(viewModel2);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult Pizza(CreateFoodViewModel viewModel2)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var Pizza = new Food
+                {
+                    Type = viewModel2.Type,
+                    Size = viewModel2.Size,
+                    Cheese = viewModel2.Cheese,
+                    Dessert = viewModel2.Dessert,
+                    Drinks = viewModel2.Drinks,
+                };
+
+                _foodFactoryDbContext.MyFoods.Add(Pizza);
+                _foodFactoryDbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
+           
+            viewModel2.PizzaTypeChoices = new List<string> { "Margarita", "Pepperoni Pizza", " BBQ Chicken Pizza", "Cheese Pizza" };
+            viewModel2.SizeChoices = new List<string> { "Small", "Medium", "Large" };
+            viewModel2.PizzaPromotion = new List<string> { "Cheddar", "Chicken", "Mushroom", "Sausage","Bacon" };
+            viewModel2.DessertChoices = new List<string> { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" };
+            viewModel2.DrinksChoices = new List<string> { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" };
+
+            return View(viewModel2);
+        }
+    
+
     }
 }

@@ -29,7 +29,7 @@ namespace FoodFactory.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Cheese")
+                    b.Property<string>("Promotion")
                         .IsRequired()
                         .HasColumnType("text");
 
