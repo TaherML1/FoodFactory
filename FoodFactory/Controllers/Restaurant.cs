@@ -46,7 +46,7 @@ namespace FoodFactory.Controllers
 
             viewModel.TypeChoices = new List<string> { "Standard", "Zurna", "Beef" };
             viewModel.SizeChoices = new List<string> { "Small", "Medium", "Large" };
-            viewModel.CheeseChoices = new List<string> { "Cheddar", "Tazekaşar", "None" };
+            viewModel.CheeseChoices = new List<string> { "Cheddar", "Mozzarella", "None" };
             viewModel.DessertChoices = new List<string> { "CheeseCake", "Puding", "Souffle", "Tiramisu", "Biscotti" };
             viewModel.DrinksChoices = new List<string> { "Cola", "Ayran", "IceTea", "Sprite", "Fanta" };
 
